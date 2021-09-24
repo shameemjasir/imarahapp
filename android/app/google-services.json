@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "661506955660",
+    "firebase_url": "https://gomarketdemo.firebaseio.com",
+    "project_id": "gomarketdemo",
+    "storage_bucket": "gomarketdemo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661506955660:android:ec9d9ed7dc0b7e30115ea9",
+        "android_client_info": {
+          "package_name": "com.gomarketdemo.groceryy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661506955660-5noicbao04kqs0f1i54ptpo9qjs5fd4n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gomarketdemo.groceryy",
+            "certificate_hash": "e3f50d8fbe60b6f86b3a5e1db65d1537c43a68ba"
+          }
+        },
+        {
+          "client_id": "661506955660-vnp6cfpc5ngvgs068mcdsaa3lddbtj6q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gomarketdemo.groceryy",
+            "certificate_hash": "ff8ba7ee2923205a9f9093983cce9f6376b4e2cb"
+          }
+        },
+        {
+          "client_id": "661506955660-3pa589nc9rfa2v1jle82pgg04efdgq7l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2kvOckQn8vJlqi8PPnbOzK5dCf-xg3eQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661506955660-3pa589nc9rfa2v1jle82pgg04efdgq7l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "661506955660-15j6k7i11q1e7405ln8ihmppasa6fsoq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.gomarketdemo.grocery"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
