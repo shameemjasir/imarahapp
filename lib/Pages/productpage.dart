@@ -288,7 +288,7 @@ class _ViewAllProductState extends State<ViewAllProduct> {
                   varient_id:
                   '${listName[index].varientId}'));
               if (indd >= 0) {
-                qty = cartItemd[indd].qty;
+                qty = int.parse(cartItemd[indd].qty);
               }
             }
 

@@ -639,8 +639,8 @@ class NewHomeView1State extends State<NewHomeView1> {
                                                       varient_id:
                                                       '${showindex.data[index].varientId}'));
                                                   if (indd >= 0) {
-                                                    qty = widget
-                                                        .cartItemd[indd].qty;
+                                                    qty = int.parse(widget
+                                                        .cartItemd[indd].qty);
                                                   }
                                                 }
 

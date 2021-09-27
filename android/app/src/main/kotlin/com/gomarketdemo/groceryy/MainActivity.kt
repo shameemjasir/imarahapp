@@ -1,4 +1,4 @@
-package com.gomarketdemo.groceryy
+package com.woba.customer
 
 import io.flutter.embedding.android.FlutterActivity
 

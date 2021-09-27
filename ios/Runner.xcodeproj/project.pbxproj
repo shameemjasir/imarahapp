@@ -483,7 +483,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 8.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gomarketdemo.groceryy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.woba.customer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -620,7 +620,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 8.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gomarketdemo.groceryy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.woba.customer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -650,7 +650,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 8.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gomarketdemo.groceryy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.woba.customer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -684,7 +684,7 @@
 				MARKETING_VERSION = 8.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gomarketdemo.groceryy.ImageNotification;
+				PRODUCT_BUNDLE_IDENTIFIER = com.woba.customer.ImageNotification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -717,7 +717,7 @@
 				);
 				MARKETING_VERSION = 8.0.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gomarketdemo.groceryy.ImageNotification;
+				PRODUCT_BUNDLE_IDENTIFIER = com.woba.customer.ImageNotification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -748,7 +748,7 @@
 				);
 				MARKETING_VERSION = 8.0.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gomarketdemo.groceryy.ImageNotification;
+				PRODUCT_BUNDLE_IDENTIFIER = com.woba.customer.ImageNotification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
