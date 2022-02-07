@@ -132,7 +132,7 @@ class CartItemData{
     this.quantity = json['quantity'];
     this.unit = json['unit'];
     this.varient_id = json['varient_id'];
-    this.qty = json['qty'];
+    this.qty = int.parse('${json['qty']}');
     this.price = json['price'];
     this.total_mrp = json['total_mrp'];
     this.order_cart_id = json['order_cart_id'];

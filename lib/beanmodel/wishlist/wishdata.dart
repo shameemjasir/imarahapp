@@ -61,7 +61,7 @@ class WishListDataModel{
       this.product_id);
 
   factory WishListDataModel.fromJson(dynamic json){
-    return WishListDataModel(json['wish_id'], json['user_id'], json['varient_id'], json['quantity'], json['unit'], json['price'], json['mrp'], json['product_name'], json['description'], '$imagebaseUrl${json['varient_image']}', json['store_id'], json['created_at'], json['updated_at'],0,json['stock'],json['product_id']);
+    return WishListDataModel(json['wish_id'], json['user_id'], json['varient_id'], json['quantity'], json['unit'], json['price'], json['mrp'], json['product_name'], json['description'], '$imagebaseUrl${json['product_image']}', json['store_id'], json['created_at'], json['updated_at'],0,json['stock'],json['product_id']);
   }
 
 

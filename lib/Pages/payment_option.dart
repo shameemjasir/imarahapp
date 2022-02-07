@@ -196,8 +196,17 @@ class PaymentOptionState extends State<PaymentOption> {
             isCouponApplied = true;
             promocodeprice = double.parse('${orderBean.data.coupon_discount}');
             couponCodeTxt = '$couponCode';
+            makeOrderData = orderBean.data;
+          });
+        } else {
+          setState(() {
+            isCouponApplied = false;
+            promocodeprice = 0.0;
+            couponCodeTxt = '--';
+            makeOrderData = orderBean.data;
           });
         }
+        Toast.show(orderBean.message, context,duration: Toast.LENGTH_SHORT,gravity: Toast.CENTER);
       }
       setState(() {
         isCouponAppliedProgress = false;
@@ -296,11 +305,7 @@ class PaymentOptionState extends State<PaymentOption> {
                                   color: kMainTextColor,
                                   fontSize: 15)),
                           IconButton(onPressed: (){
-                            setState(() {
-                              if(isCouponApplied){
-                                isCouponApplied= false;
-                              }
-                            });
+                            applyCoupon('$couponCodeTxt');
                           }, icon: Icon(Icons.highlight_remove,
                               size: 20.0, color: kLightTextColor),padding: const EdgeInsets.only(left: 2, right: 6),),
                         ],
@@ -335,7 +340,7 @@ class PaymentOptionState extends State<PaymentOption> {
                                         ),),
                                         GestureDetector(
                                           onTap: () {
-                                            print('${cartItemd[0].store_id} , ${makeOrderData.cart_id}');
+                                            // print('${cartItemd[0].store_id} , ${makeOrderData.cart_id}');
                                             Navigator.pushNamed(context, PageRoutes.offerpage, arguments: {
                                               'store_id': '${storeDetails.store_id}',
                                               'cart_id':'${makeOrderData.cart_id}'

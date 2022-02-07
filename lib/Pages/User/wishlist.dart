@@ -91,7 +91,7 @@ class _MyWishListState extends State<MyWishList> {
     var url = showWishlistUri;
     await http.post(url,
         body: {'user_id': '${userId}', 'store_id': '$storeId'},headers: {
-        'Authorization': 'Bearer ${prefs.getString('accesstoken')}'
+          'Authorization': 'Bearer ${prefs.getString('accesstoken')}'
         }).then((value) {
       print('resp - ${value.body}');
       if (value.statusCode == 200) {
@@ -151,7 +151,7 @@ class _MyWishListState extends State<MyWishList> {
   Widget build(BuildContext context) {
     var locale = AppLocalizations.of(context);
     return Scaffold(
-      backgroundColor: kMainPageBGColor,
+      backgroundColor: Color(0xfff8f8f8),
       appBar: AppBar(
         backgroundColor: kWhiteColor,
         title: Text(
@@ -285,9 +285,20 @@ class _MyWishListState extends State<MyWishList> {
               onTap: () {
                 if (storedetail != null) {
                   ProductDataModel modelP = ProductDataModel(
-                      pId: listName[index].varient_id,
+                      pId: listName[index].product_id,
+                      productId: listName[index].product_id,
                       productImage: listName[index].varient_image,
                       productName: listName[index].product_name,
+                      varientId: listName[index].varient_id,
+                      description: listName[index].description,
+                      quantity: listName[index].quantity,
+                      unit: listName[index].unit,
+                      storeId: listName[index].store_id,
+                      price: listName[index].price,
+                      mrp: listName[index].mrp,
+                      basePrice: listName[index].price,
+                      baseMrp: listName[index].mrp,
+                      type: 'Regular',
                       tags: [],
                       varients: <ProductVarient>[
                         ProductVarient(
@@ -298,7 +309,7 @@ class _MyWishListState extends State<MyWishList> {
                             varientImage: listName[index].varient_image,
                             unit: listName[index].unit,
                             quantity: listName[index].quantity,
-                            stock: 1,
+                            stock: int.parse('${listName[index].stock}'),
                             storeId: listName[index].store_id)
                       ]);
                   Navigator.pushNamed(context, PageRoutes.product, arguments: {
@@ -574,7 +585,7 @@ class _MyWishListState extends State<MyWishList> {
                                               ? false
                                               : true,
                                           child: Text(
-                                              '$apCurrency ${listName[index].mrp}',
+                                              'Rs ${listName[index].mrp}',
                                               style: TextStyle(
                                                   color:
                                                   kLightTextColor,
@@ -584,7 +595,7 @@ class _MyWishListState extends State<MyWishList> {
                                                       .lineThrough)),
                                         ),
                                         Text(
-                                            '$apCurrency ${listName[index].price}',
+                                            'Rs ${listName[index].price}',
                                             style: TextStyle(
                                                 color: kMainColor,
                                                 fontSize: 16,

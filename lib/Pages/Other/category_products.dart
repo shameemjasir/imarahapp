@@ -281,7 +281,7 @@ class _CategoryProductState extends State<CategoryProduct> {
                   int indd = cartItemd.indexOf(
                       CartItemData(varient_id: '${listName[index].varientId}'));
                   if (indd >= 0) {
-                    qty = int.parse(cartItemd[indd].qty);
+                    qty = int.parse('${cartItemd[indd].qty}');
                   }
                 }
 

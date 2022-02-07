@@ -47,7 +47,7 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 const AndroidNotificationChannel channel = AndroidNotificationChannel(
   '1234', // id
   'High Importance Notifications', // title
-  'This channel is used for important notifications.', // description
+  // 'This channel is used for important notifications.', // description
   importance: Importance.high,
 );
 
@@ -131,7 +131,8 @@ class NewHomeViewState extends State<NewHomeView> {
         AppNotice data1 = AppNotice.fromJson(jsonDecode(value.body));
         print('data - ${data1.toString()}');
         if ('${data1.status}' == '1') {
-          appNotice.hitNotice(int.parse('${data1.data.status}'), '${data1.data.notice}');
+          appNotice.hitNotice(
+              int.parse('${data1.data.status}'), '${data1.data.notice}');
         }
       }
     }).catchError((e) {
@@ -140,15 +141,12 @@ class NewHomeViewState extends State<NewHomeView> {
   }
 
   void setFirebase() async {
-    try{
+    try {
       await Firebase.initializeApp();
-    }catch(e){
-
-    }
+    } catch (e) {}
     messaging = FirebaseMessaging.instance;
     iosPermission(messaging);
-    var initializationSettingsAndroid =
-    AndroidInitializationSettings('icon');
+    var initializationSettingsAndroid = AndroidInitializationSettings('icon');
     var initializationSettingsIOS = IOSInitializationSettings(
         onDidReceiveLocalNotification: onDidReceiveLocalNotification);
     var initializationSettings = InitializationSettings(
@@ -162,10 +160,8 @@ class NewHomeViewState extends State<NewHomeView> {
         .getInitialMessage()
         .then((RemoteMessage message) {
       if (message != null) {
-        _showNotification(
-            flutterLocalNotificationsPlugin,
-            '${message.notification.title}',
-            '${message.notification.body}');
+        _showNotification(flutterLocalNotificationsPlugin,
+            '${message.notification.title}', '${message.notification.body}');
       }
     });
 
@@ -173,20 +169,18 @@ class NewHomeViewState extends State<NewHomeView> {
       RemoteNotification notification = message.notification;
       AndroidNotification android = message.notification?.android;
       if (notification != null && android != null) {
-        _showNotification(flutterLocalNotificationsPlugin, notification.title, notification.body);
+        _showNotification(flutterLocalNotificationsPlugin, notification.title,
+            notification.body);
       }
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       print('A new onMessageOpenedApp event was published!');
-      _showNotification(
-          flutterLocalNotificationsPlugin,
-          '${message.notification.title}',
-          '${message.notification.body}');
+      _showNotification(flutterLocalNotificationsPlugin,
+          '${message.notification.title}', '${message.notification.body}');
     });
     FirebaseMessaging.onBackgroundMessage(myBackgroundMessageHandler);
   }
-
 
   Future onDidReceiveLocalNotification(
       int id, String title, String body, String payload) async {
@@ -196,10 +190,8 @@ class NewHomeViewState extends State<NewHomeView> {
 
   Future selectNotification(String payload) async {}
 
-
-
   void iosPermission(FirebaseMessaging firebaseMessaging) {
-    if(Platform.isIOS){
+    if (Platform.isIOS) {
       firebaseMessaging.setForegroundNotificationPresentationOptions(
         alert: true,
         badge: true,
@@ -245,18 +237,20 @@ class NewHomeViewState extends State<NewHomeView> {
       }
       getUserPrefs();
       pRovider.hitCounter();
-      navBottomProvider.hitBottomNavigation(0, appbarTitle, '${locale.searchOnGoGrocer}$appname');
+      navBottomProvider.hitBottomNavigation(
+          0, appbarTitle, '${locale.searchOnGoGrocer}$appname');
     }
     // print(isEnteredFirst);
     // print(isKeyboardOpen);
     // print(MediaQuery.of(context).viewInsets.bottom);
     return WillPopScope(
-      onWillPop: () async{
-        if(navBottomProvider.state!=null && navBottomProvider.state.navigation == 0){
+      onWillPop: () async {
+        if (navBottomProvider.state != null &&
+            navBottomProvider.state.navigation == 0) {
           return true;
-        }else{
-          navBottomProvider.hitBottomNavigation(0, appbarTitle,
-              '${locale.searchOnGoGrocer}$appname');
+        } else {
+          navBottomProvider.hitBottomNavigation(
+              0, appbarTitle, '${locale.searchOnGoGrocer}$appname');
           return false;
         }
       },
@@ -321,7 +315,8 @@ class NewHomeViewState extends State<NewHomeView> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     // runSpacing: 0.0,
                                     // spacing: 0.0,
                                     // runAlignment: WrapAlignment.center,
@@ -354,7 +349,8 @@ class NewHomeViewState extends State<NewHomeView> {
                                   height: 20,
                                   materialTapTargetSize:
                                       MaterialTapTargetSize.shrinkWrap,
-                                  focusColor: kButtonBorderColor.withOpacity(0.8),
+                                  focusColor:
+                                      kButtonBorderColor.withOpacity(0.8),
                                 ),
                                 Text(
                                   (locModel.storeFinderData != null &&
@@ -400,12 +396,14 @@ class NewHomeViewState extends State<NewHomeView> {
                           automaticallyImplyLeading: true,
                           centerTitle: true,
                           leading: GestureDetector(
-                            onTap: (){
-                              navBottomProvider.hitBottomNavigation(0, appbarTitle,
+                            onTap: () {
+                              navBottomProvider.hitBottomNavigation(
+                                  0,
+                                  appbarTitle,
                                   '${locale.searchOnGoGrocer}$appname');
                             },
                             behavior: HitTestBehavior.opaque,
-                           child: Icon(Icons.arrow_back_ios_sharp),
+                            child: Icon(Icons.arrow_back_ios_sharp),
                           ),
                           actions: [
                             Visibility(
@@ -430,7 +428,8 @@ class NewHomeViewState extends State<NewHomeView> {
                           children: [
                             Expanded(
                                 child: Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 20),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 20),
                               decoration: BoxDecoration(
                                   color: kWhiteColor,
                                   borderRadius: BorderRadius.circular(10),
@@ -458,7 +457,8 @@ class NewHomeViewState extends State<NewHomeView> {
                                           .toLowerCase()
                                           .contains(value.toLowerCase()))
                                       .toList();
-                                  cateP.emitCategoryList(chList, storeFinderData);
+                                  cateP.emitCategoryList(
+                                      chList, storeFinderData);
                                 },
                                 autofocus: false,
                                 style: Theme.of(context)
@@ -499,7 +499,8 @@ class NewHomeViewState extends State<NewHomeView> {
                                 child: Badge(
                                   padding: EdgeInsets.all(5),
                                   position: BadgePosition(end: -2.5, top: -5),
-                                  animationDuration: Duration(milliseconds: 300),
+                                  animationDuration:
+                                      Duration(milliseconds: 300),
                                   animationType: BadgeAnimationType.slide,
                                   badgeContent: Text(
                                     _NotiCounter.toString(),
@@ -550,8 +551,8 @@ class NewHomeViewState extends State<NewHomeView> {
                             child: Row(
                               children: [
                                 Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 8.0),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 8.0),
                                   child: Icon(
                                     Icons.search,
                                     color: kIconColor,
@@ -560,8 +561,9 @@ class NewHomeViewState extends State<NewHomeView> {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 2.0),
                                   child: Text('$hintText',
-                                      style:
-                                          Theme.of(context).textTheme.subtitle2),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .subtitle2),
                                 ),
                               ],
                             ),
@@ -574,7 +576,8 @@ class NewHomeViewState extends State<NewHomeView> {
                           children: [
                             Expanded(
                                 child: Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 20),
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 20),
                               decoration: BoxDecoration(
                                   color: kWhiteColor,
                                   borderRadius: BorderRadius.circular(10),
@@ -633,7 +636,8 @@ class NewHomeViewState extends State<NewHomeView> {
                                 child: Badge(
                                   padding: EdgeInsets.all(5),
                                   position: BadgePosition(end: -2.5, top: -5),
-                                  animationDuration: Duration(milliseconds: 300),
+                                  animationDuration:
+                                      Duration(milliseconds: 300),
                                   animationType: BadgeAnimationType.slide,
                                   badgeContent: Text(
                                     _NotiCounter.toString(),
@@ -764,7 +768,9 @@ class NewHomeViewState extends State<NewHomeView> {
                       Expanded(
                         child: GestureDetector(
                           onTap: () {
-                            navBottomProvider.hitBottomNavigation(0, appbarTitle,
+                            navBottomProvider.hitBottomNavigation(
+                                0,
+                                appbarTitle,
                                 '${locale.searchOnGoGrocer}$appname');
                             // hintText = ;
                             // setState(() {
@@ -797,8 +803,8 @@ class NewHomeViewState extends State<NewHomeView> {
                         child: GestureDetector(
                           onTap: () {
                             if (selectedInd != 1) {
-                              navBottomProvider.hitBottomNavigation(1, locale.aa2,
-                                  locale.aa3);
+                              navBottomProvider.hitBottomNavigation(
+                                  1, locale.aa2, locale.aa3);
                               if (storeFinderData != null) {
                                 if (!cateP.state.isSearching) {
                                   cateP.hitBannerDetails(
@@ -837,7 +843,9 @@ class NewHomeViewState extends State<NewHomeView> {
                         child: GestureDetector(
                           onTap: () {
                             // searchP.emitSearchNull();
-                            navBottomProvider.hitBottomNavigation(2, appbarTitle,
+                            navBottomProvider.hitBottomNavigation(
+                                2,
+                                appbarTitle,
                                 '${locale.searchOnGoGrocer}$appname');
                             // hintText = ;
                             // setState(() {
@@ -889,7 +897,8 @@ class NewHomeViewState extends State<NewHomeView> {
                                   builder: (context, cartCount) {
                                 return Badge(
                                   padding: EdgeInsets.all(5),
-                                  animationDuration: Duration(milliseconds: 300),
+                                  animationDuration:
+                                      Duration(milliseconds: 300),
                                   animationType: BadgeAnimationType.slide,
                                   badgeContent: Text(
                                     cartCount.toString(),
@@ -975,7 +984,7 @@ Future<void> _showNotification(
   vibrationPattern[2] = 5000;
   vibrationPattern[3] = 2000;
   final AndroidNotificationDetails androidPlatformChannelSpecifics =
-      AndroidNotificationDetails('1234', 'Notify', 'Notify On Shopping',
+      AndroidNotificationDetails('1234', 'Notify',
           vibrationPattern: vibrationPattern,
           importance: Importance.max,
           priority: Priority.high,
